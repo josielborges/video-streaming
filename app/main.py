@@ -2,6 +2,7 @@ import cv2
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
+from threading import Lock
 
 app = FastAPI()
 
@@ -11,11 +12,13 @@ cameras = {
     "camera_1": cv2.VideoCapture(0),
     "camera_2": cv2.VideoCapture(2)
 }
+camera_lock = Lock()
 
 
 def generate_frames(camera):
     while True:
-        success, frame = camera.read()
+        with camera_lock:
+            success, frame = camera.read()
         if not success:
             break
         else:

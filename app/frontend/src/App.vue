@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <h1>Camera Streams</h1>
-    <div id="camera-container">
-      <select v-model="selectedCamera" @change="changeCamera">
-        <option v-for="(name, id) in cameras" :key="id" :value="id">{{ name }}</option>
-      </select>
+    <div id="sidebar">
+      <h2>Menu</h2>
+      <!-- Adicione seus botões e menus aqui -->
+      <button @click="clearLogs">Clear Logs</button>
+      <!-- Mais botões ou menus -->
+    </div>
+
+    <div id="content">
       <div id="video-container">
-        <img :src="videoSrc" alt="Video Stream">
+        <h2>Live Stream</h2>
+        <img :src="videoSrc" alt="Video Stream"/>
+      </div>
+      <div id="log-container">
+        <h2>Logs</h2>
+        <pre>{{ logs }}</pre>
       </div>
     </div>
   </div>
@@ -20,7 +28,8 @@ export default {
       cameras: {
         'camera_1': 'Camera 1',
         'camera_2': 'Camera 2'
-      }
+      },
+      logs: ''
     };
   },
   computed: {
@@ -29,8 +38,8 @@ export default {
     }
   },
   methods: {
-    changeCamera() {
-      // A mudança no seletor automaticamente atualizará a fonte do vídeo
+    clearLogs() {
+      this.logs = ''; // Limpa os logs
     }
   }
 };
@@ -38,28 +47,49 @@ export default {
 
 <style>
 #app {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  display: flex;
+  height: 100vh;
   margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
   padding: 20px;
-  text-align: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
 }
 
-h1 {
-  color: #333;
-}
-
-#camera-container {
-  margin-top: 20px;
+#content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 #video-container {
-  margin-top: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#log-container {
+  height: 150px;
+  overflow-y: auto;
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+h2 {
+  margin-top: 0;
 }
 
 img {
-  width: 80%;
+  width: 100%;
   height: auto;
-  border: 2px solid #333;
+  border: 1px solid #ddd;
 }
 </style>
