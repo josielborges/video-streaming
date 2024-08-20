@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Streams</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<h1>Camera Streams</h1>
+<div id="camera-container">
+    <label for="camera-select">Cameras</label><select id="camera-select" onchange="changeCamera()">
+        <option value="camera_1">Camera 1</option>
+        <option value="camera_2">Camera 2</option>
+    </select>
+    <div id="video-container">
+        <img id="video-feed" src="/video_feed/camera_1" alt="Video Stream">
+    </div>
+</div>
+<script src="/static/script.js"></script>
+</body>
+</html>
