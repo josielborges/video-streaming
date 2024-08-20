@@ -1,11 +1,11 @@
 import cv2
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse, StreamingResponse
+from fastapi.responses import HTMLResponse, FileResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="frontend/dist"), name="static")
 
 cameras = {
     "camera_1": cv2.VideoCapture(0),
@@ -26,8 +26,8 @@ def generate_frames(camera):
 
 
 @app.get("/")
-async def index():
-    return HTMLResponse(content=open("static/index.html").read(), status_code=200)
+async def serve_frontend():
+    return FileResponse('frontend/dist/index.html')
 
 
 @app.get("/video_feed/{camera_id}")
