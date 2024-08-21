@@ -1,8 +1,8 @@
 <template>
-  <div id="log-container">
+<!--  <div id="log-container">-->
     <h2>Logs</h2>
-    <pre>{{ logs }}</pre>
-  </div>
+    <canvas id="line-chart" width="100%" height="100%"></canvas>
+<!--  </div>-->
 </template>
 
 <script>
@@ -12,6 +12,7 @@ export default {
 };
 </script>
 
+<!--
 <style scoped>
 #log-container {
   height: 150px;
@@ -20,4 +21,4 @@ export default {
   padding: 10px;
   border-top: 1px solid #ddd;
 }
-</style>
+</style>-->

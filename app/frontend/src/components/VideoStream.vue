@@ -1,6 +1,5 @@
 <template>
-  <div id="video-container">
-    <h2>Live Stream</h2>
+  <div id="video">
     <img :src="videoSrc" alt="Video Stream"/>
   </div>
 </template>
@@ -13,16 +12,15 @@ export default {
 </script>
 
 <style scoped>
-#video-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
 
 img {
-  width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
+  width: auto;
+  height: 100%;
+}
+
+#video {
+  text-align: center;
+  background-color: #323039;
+  height: 100%;
 }
 </style>

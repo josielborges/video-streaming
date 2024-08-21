@@ -18,6 +18,7 @@ camera_lock = Lock()
 def generate_frames(camera):
     while True:
         with camera_lock:
+            camera.set(cv2.CAP_PROP_FPS, 10)
             success, frame = camera.read()
         if not success:
             break

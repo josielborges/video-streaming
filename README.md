@@ -11,3 +11,7 @@ Run the application with
 ```
 python main.py
 ```
+
+
+npm install primevue
+npm install @primevue/themes
